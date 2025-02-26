@@ -2,9 +2,9 @@ Employee Retention Project
 
 Programming Languages: Python
 
-Python Packages: numpy, Pandas, Scipy, seaborn, Matplotlib, statsmodels, scikit-learn
+Python Packages: Numpy, Pandas, Scipy, Seaborn, Matplotlib, Statsmodels, Scikit-learn
 
-Machine Learning Models: regression (linear, logistic), Naive Bayes, decision trees, random forest, AdaBoost, XGBoost
+Machine Learning Models: Regression (Linear, Logistic), Naive Bayes, Decision Trees, Random Forest, AdaBoost, XGBoost
 
 Dataset from Kaggle
 
