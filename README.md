@@ -59,6 +59,92 @@ There seems to be a link between hours worked and evaluation scores. Interesting
 <img width="1202" alt="image" src="https://github.com/user-attachments/assets/3b614a4e-2c82-4f8d-aa60-b33c4ddfe972" />
 
 Out of the employees that were promoted in the last five years, few of them left. Very few employees that worked long hours were promoted. All of the employees who left were working the longest hours.
+There didn't seem to be any patterns related by department.
+
+<img width="1193" alt="image" src="https://github.com/user-attachments/assets/fd27e667-53e4-4be2-b3b8-28c34545c18a" />
+
+The correlation heatmap does confirm that evaluation scores, monthly hours, and number of projects all have some positive correlation to each other and if an employee leaves is negatively correlated with the satisfaction level.
+
+Insights
+
+Leaving seems to be tied to long working hours, low satisfaction levels and too many projects. AKA Burn Out. Could be because of poor management. Employees that have been with the company 6 years or more tend not to leave.
+
+Let's build some models
+
+Logistic Regression:
+
+
+
+<img width="735" alt="image" src="https://github.com/user-attachments/assets/b22ad47e-494c-41b3-9f33-66fddf8ceb17" />
+
+<img width="554" alt="image" src="https://github.com/user-attachments/assets/559e1ff7-4523-4611-b3b4-83438d90a5bb" />
+
+Tenure was removed due to the many outliers discovered. Logistic Regression is sensitive to outliers.
+
+<img width="404" alt="image" src="https://github.com/user-attachments/assets/c27e6e04-b955-4ad7-b190-e37cfb2a803a" />
+
+A perfect model would yield all true negatives and true positives, and no false negatives or false positives.
+
+Checking class balance in data and creating a classification report with precision, recall, f1-score, and accuracy metrics.
+
+<img width="734" alt="image" src="https://github.com/user-attachments/assets/c7bc7aa0-efb2-422e-bcf9-52bed04c0c81" />
+
+The model needs to be better to be able to accurately predict employees that leave.
+
+Tree-Based Model
+
+<img width="866" alt="image" src="https://github.com/user-attachments/assets/6d04058a-aa0c-4a45-a6ea-a614a4e1ab63" />
+
+AUC score is pretty good at around 0.97, which means this model's prediction power is pretty good.
+Write a function to extract all scored from the GS.
+Strong model performance is shown.
+
+<img width="574" alt="image" src="https://github.com/user-attachments/assets/f77e19eb-dd77-4e4f-ac37-35bb6c4c3223" />
+
+Random Forest Model and set up cross-validation
+
+<img width="822" alt="image" src="https://github.com/user-attachments/assets/b86dbb19-1a6a-450d-9ee2-d73e59a8f315" />
+
+<img width="766" alt="image" src="https://github.com/user-attachments/assets/f1489f88-aad3-476d-a676-23e34d8ba34a" />
+
+Random Forest Model scores are better than the Decision-Tree Model overall. Recall only slightly lower (0.001). Overall the Random Forest Model is superior to the Decision-Tree Model.
+
+Time to evaluate the final models.
+
+Round 2 - Decision-Tree
+
+<img width="770" alt="image" src="https://github.com/user-attachments/assets/ea6fc257-8be7-412e-8ee9-62fd8fa8b88c" />
+
+Scores are still very good even though some scores did fall. This is to be expected being as there are fewer features.
+
+Round 2 - Final Random Forest
+
+<img width="752" alt="image" src="https://github.com/user-attachments/assets/f12c9762-7259-4e39-aa41-bdc6aa205478" />
+
+Scores did fall on round two for the Random Forest Final Model as well.
+
+Get Predictions on testing data:
+
+<img width="712" alt="image" src="https://github.com/user-attachments/assets/9c4893d5-a47b-46b0-b1c6-aa509f3e2f83" />
+
+Overall a stable model. 
+
+Now Plot the confusion Matrix.
+Does seems to predict more false positives than the other way around. Still solid.
+
+<img width="598" alt="image" src="https://github.com/user-attachments/assets/65141503-286b-4a5d-8eef-794fadddb499" />
+
+Plotting the tree:
+
+<img width="1208" alt="image" src="https://github.com/user-attachments/assets/20268d23-8cd0-4a2b-81bd-4efe0d7cfc6e" />
+
+Taking a look at feature importance
+
+<img width="638" alt="image" src="https://github.com/user-attachments/assets/29daf5a1-464b-4e03-a4b9-ca1f916d63e7" />
+
+<img width="649" alt="image" src="https://github.com/user-attachments/assets/2fd606b4-aee7-410f-aefe-7c4abb5b38ba" />
+
+As suspected, from our best model Random Forest, we see that number of projects, last evaluation and being overworked seems to be the highest importance in contributing to employee churn. Leadership is going to have to take a good look into the managers and how they are leading their teams.
 
 
 
